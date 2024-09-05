@@ -1,0 +1,12 @@
+terraform init - initializes working directory that contains terraform code
+               - which means downloads modules and plugins needed
+               - creates the state file to track infra creation
+
+terraform plan - shows the plan of infra going to create
+               - uses auth creds at this stage to connect to infra if req
+
+terraform apply - deploys infra and statements in the code
+                - updates deployment tracking file ie state file
+
+terraform destroy - destroys all teh resources created and stored in the state file
+                  - 
