@@ -1,0 +1,74 @@
+# first type - which are defined in code
+variable "my-var"{
+    description = "My description"
+    type = string
+    default = "Hello"
+}
+
+
+# second type - which shd be defined as OS env variable or at run time, else we will get an error
+variable "sec-var" {}
+
+# referencing variable
+var.sec-var
+
+# usually we use a separate file with name below to store  
+terraform.tfvars
+
+# variable validation. ex: let say we want a var name which is > 4 in length. available form 0.13
+variable "my-var"{
+    description = "My test variable"
+    type = string
+    default = "Hello"
+    validation{
+        condition = length(var.my-var) > 4
+        error_message = "String must be more than 4 chars"
+    }
+}
+
+# variable masking - variable value will be hidden during the runs (parameter: sensitive = true)
+variable "my-var"{
+    description = "My test variable"
+    type = string
+    default = "Hello"
+    sensitive = true
+}
+
+# Base type vars: string, number, bool
+# Complex types: List, set, Map, Object, Tuple
+
+# ex of list variable
+variable "list_of_regions"{
+    type = list(string)
+    default = ["us-east-1", "ap-south-1]
+}
+
+# ex of complex variable
+variable docker_ports{
+    type = list(Object({
+        internal = number
+        external = number
+        protocol = string
+    }))
+
+    default = [{
+        internal = 8300
+        external = 8300
+        protocol = "tcp"
+    }]
+}
+
+
+// # ** Presedence of variables read **
+// 1. OS vars 
+// 2. vars in terraform.tfvars file
+
+
+# Output and output values. Output variables are shown on the shell after running terraform apply. These are like return values that we want to track
+output "instance_id" {
+    description = "VM's private IP"
+    value = aws_instance.my-vm.private_ip
+}
+
+
+

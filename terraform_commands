@@ -10,3 +10,10 @@ terraform apply - deploys infra and statements in the code
 
 terraform destroy - destroys all teh resources created and stored in the state file
                   - 
+
+terraform state file - a json dump which will have track of all the resources created
+                     - usually it will be stored in terraform folder locally
+                     - but can be stored remotely for better integrity
+                     - helps to calculate deployment deltas
+                     - Never delete it / lose it
+                     

@@ -1,0 +1,21 @@
+Provisioners -ex: defining the connection method to a VM like ssh. These shd be used at last if we dont have any other choice,
+else use inherit mechanism to carryout custom tasks
+
+There are 2 types of provisioners
+1. Creation-time provisioner
+2. Destroy-time provisioner
+
+
+resource "null_resource" "dummy_resource" {
+    provisioner "local-exec" {
+        command = "echo '0' > status.txt"
+    }
+
+    provisioner "local-exec" {
+        when = destroy
+        command = "echo '1' > status.txt"
+    }
+}
+
+ Read - self keyword in provisioners
+
