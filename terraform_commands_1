@@ -4,9 +4,14 @@ terraform init - initializes working directory that contains terraform code
 
 terraform plan - shows the plan of infra going to create
                - uses auth creds at this stage to connect to infra if req
+terraform plan -out=my-plan  --> Places all the plan output in my-plan file ie resources that r being created or destroyed
+terraform show my-plan > show-my-plan.txt
+terraform show -help
 
 terraform apply - deploys infra and statements in the code
                 - updates deployment tracking file ie state file
+terraform apply --auto-approve  --> need not type yes to deploy resources
+terraform apply my-plan
 
 terraform destroy - destroys all teh resources created and stored in the state file
                   - 
@@ -16,4 +21,28 @@ terraform state file - a json dump which will have track of all the resources cr
                      - but can be stored remotely for better integrity
                      - helps to calculate deployment deltas
                      - Never delete it / lose it
-                     
+
+terraform validate - To find any syntax errors in code
+terraform fmt (format) - To format our code - line spacing, word spacing and indentation
+terraform fmt --recursive - Also formats files in sub-directories
+
+
+variables.tf - where u declare variables. we can specify the default values here. 
+               but default values will only be picked if no value is specified for the variable in terraform.tfvars file
+
+Passing variables via terminal:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

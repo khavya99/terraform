@@ -1,0 +1,12 @@
+state file is saved locally by default.
+but can save state file remotely usually to remote data sources.
+    eg: s3, gcp storage bucket
+full remote storage supported resource details will be available in terraform website
+
+Remote state files can be accessed by multipla teams.
+Remote state storage - Allows state locking - so multiple executions dont collide
+                     - also contains output values to ur terraform code - which means those output values can be used by 
+                       other terraform projects or code - mostly used by remote teams
+
+            
+

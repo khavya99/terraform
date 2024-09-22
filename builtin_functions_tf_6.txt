@@ -1,0 +1,29 @@
+tf comes with pre-packed functions to help tf combine with values
+user defined functions are not allowed
+
+func_name(arg1, arg2)
+
+example:
+
+    variable proj-env {
+        type = string
+        default = "prod"
+    }
+
+    resource "aws_vpc" "my-vpc" {
+        cidr_block = "10.0.0.0/16"
+        tags = {
+            Name = join("-", ["terraform", var.proj-env])
+        }
+    }
+o/p: terraform-prod
+
+
+Other built in functions mostly used
+    file
+    max
+    flatten
+    contains - contains(["acloud", "guru", 1,2,3], "4")
+
+    
+

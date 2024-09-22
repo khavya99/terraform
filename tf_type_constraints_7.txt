@@ -1,0 +1,46 @@
+Type constraint control the type of variable values
+
+1. primitive - string type values - single type values
+    number, string, bool
+        replicas = 3
+        name = "cluster-1"
+        bool = true
+
+2. Complex types of single variable
+        list = [1,2,3,4]
+        tuple = 
+        map
+        object
+
+    2.1 Collection allows multiple values of one primitive type to be grouped together
+            Constructors for these collections include:
+                list (type) - 
+                map  (type)
+                set  (type)
+
+            variable "family" {
+                type = lsit(string)
+                default = ["a","bbbb", "kodali"]
+            } 
+    2.2 Structural types allow multiple values of different primitive types to be grouped together
+            Constructors for these collections include:
+                object (type)
+                tuple (type)
+                set (type)
+
+            variable "instructor" {
+                type = object({
+                    name = string
+                    age = number
+                })
+            }
+3. Dynamic types -
+    3.1  any constraint - any placeholder for a primitive type is yetto be decided. Type will be determined on runtime
+
+        variable "data" {
+            type = list(any)
+            default = [1,3,77,9]
+        }
+
+
+

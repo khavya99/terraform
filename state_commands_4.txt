@@ -1,0 +1,11 @@
+terraform state command - utility used for reading and manpulating terraformstate file
+                        - can remove a resource from state file manually that its not managed by terraform 
+                        - list out tracked resources and their details via state and list sub commands
+
+
+terraform state list - list out all the resources tracked by terraform state file
+terraform state rm <resource_name> - delete a resource from terraform state file (so resources will be un-managed)
+terraform state show <resource name> - show details of resources tracked by tf state 
+
+
+
