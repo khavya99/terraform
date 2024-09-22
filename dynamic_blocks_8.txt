@@ -1,1 +1,38 @@
+Dynamically constructs repeatable netsted config blocks inside terraform resources
+Supported within following block types:
+  1. resource
+  2. data
+  3. provider
+  4. provisioner
 
+Example: 
+
+  resource "aws_security_group" "my_sg" {
+      name = 'my-aws-security-group'
+      vpc_id = aws_vpc.my_vpc.id
+      dynamic "ingress" {
+        for_each = var.rules
+        content {
+          from_port = ingress.value["port"]
+          to_port = ingress.value["port"]
+          protocol = ingress.value["proto"]
+          cidr_blocks = ingress.value["cidrs"]
+         }
+      }
+   } 
+
+  complex variable sent to above dyanmic blcok:
+  variable "rules" {
+      default = [
+          {
+            port = 80
+            proto = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+          },
+           {
+            port = 22
+            proto = "tcp"
+            cidr_blocks = ["1.2.3.4/32"]
+          }
+      ]
+  }
