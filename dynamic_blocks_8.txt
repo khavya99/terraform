@@ -36,3 +36,7 @@ Example:
           }
       ]
   }
+
+Dynamic block expect a complex variable type to iterate over
+It acts like for loop and outputs a nested block for each element in your variable
+
