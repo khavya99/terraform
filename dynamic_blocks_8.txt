@@ -40,3 +40,4 @@ Example:
 Dynamic block expect a complex variable type to iterate over
 It acts like for loop and outputs a nested block for each element in your variable
 
+Only use dynamic blocks when you need to hide details in order to build a cleaner user interface when writing reusable modules
