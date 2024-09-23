@@ -6,7 +6,7 @@ TRACE is most verbose level of logging and reliable one
 To persist logged output , use TF_LOG_PATH env variable (which takes a file as an input)
 
 By default tf_log is disabled. to ste it we need to follow below.
-  export TF_LOG=TRACE
-  export TF_LOG_PATH=./terraform.log
+    export TF_LOG=TRACE
+    export TF_LOG_PATH=./terraform.log
 
 
