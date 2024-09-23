@@ -1,0 +1,48 @@
+1. fmt: formats terraform code for readability
+     helps in keeping code consistent
+     safe to run anytime
+     formats all files ending with tf
+
+2. taint: taints a resource, forcing it to be destroyed and re-created
+       modifies state file which causes recreation flow
+       taining a resource can cause other dependent resources to be modified as a result
+  command to use: terraform taint RESOURCE_ADDRESS
+       scenarios to use taint: 
+           1. to cause provisioners to run
+           2. replace misbehaving resources forcefully
+           3. to mimic side effects of recreation not modelled by any attributes of resource
+3. import: takes an existing resource not managed by terraform and maps it to resource within terraform code using id.
+           this id is dependent on underlying vendor. ex: to import aws ec2 instance, u need to provide instance id.
+           importing same resource to multiple terraform resources can cause unknown behavior and is not recommended
+  command to use: terraform import <tf resource address> <resource_id>
+      scenarios to use import: 
+          1. when you need to work with existing resources
+          2. not allowed to create new resources
+          3. not in control of creation of infra, but only allowed to manage already created ones
+4. Terraform configuration block:
+    config block for controlling tf's own behavior
+        1. configuring backend for storing state files
+        2. specifying a required tf version
+        3. specifying a req tf provisioner version and its requirements
+        4. enable and test tf experimental features
+        5. passing metadata to providers
+    example:
+        terraform {
+            required_version = ">=0.13.0"
+            required_provisioners {
+                  aws = ">=3.0.0"
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
