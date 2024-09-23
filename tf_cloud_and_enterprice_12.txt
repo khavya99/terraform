@@ -1,1 +1,47 @@
+1. Best way to deploy tf code and deployments:
+      1. Hashicorp sentinel
+      2. TF vault provider
+2. difference b/w tf OSS (open source software) and enterprice offerings
+3. summarize benefits and usage of tf cloud
+
+Hashicorp sentinel:
+  1. framework that enforces policies (restrictions) on tf code
+  2. avoid accidental deploymments
+  3. codification - easy understanding and better colloboration
+  4. version control
+  5. test and automation
+use case:
+  1. for enforcing CIS standards  across AWS account
+  2. checking only t2.micro instances are used
+
+Terraform Valut: 
+  Terraform/hasicorp vault for injecting secrets securely.
+  secrets management
+  store sensitive data securely
+  dynamically provides creds and rotate them securely
+  encrypts sensitive data at rest and in transit and privides access to secrets using ACLs
+      ex of data stored is:
+          1. usernames and passwords
+          2. db creds
+          3. API tokens
+          4. TLS certs
+  
+Terraform registry and terraform cloud workspace:
+    Fetching a provider or module from tf registry is built in tf workflow by default
+Terraform Clous workspace:
+    Workspaces are hosted on terraform cloud
+    All tf commanda are executed on managed tf cloud VMs
+
+
+                    ***** Terraform OSS workspace *****                        vs                   ***** Terraform cloud workspace *****
+                    stores alternate state files in same working directory
+TF config           stored on disk                                                                    In linked version control repo or periodically uploaded via API/CLI
+Variable Values     as .tfvars file as CLi arguments or shell env                                     In workspace in TF cloud
+State               On disk or remote backend                                                         In workspace (In terraform cloud)
+creds and secrets   In shell env or entered at prompts                                                In workspace (terraform cloud) stored as sensitive vars
+
+
+
+
+
 
