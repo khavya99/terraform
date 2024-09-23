@@ -1,1 +1,29 @@
+terraform workspaces are alternate state files with in same working directory
+tf starts with a single workspace thats always called default. it cant be deleted
+each work space will track different state file that corresponds to that directory
 
+terraform workspace subcommand example                         use
+  1. terraform workspace new <workspace-name>            create workspace
+  2. terraform workspace select <workspace-name>         select workspace
+
+use of workspace:
+  1. test changes using parallel, distinct copy of infra
+  2. it can be modelled against branches in version control such as git
+
+workspaces are meant to share resources and help to enable colloboration.
+access workspace name - ${terraform.workspace}
+
+example-1:
+  resource "aws_instance" "example" {
+      count = terraform.workspace == "default" ? 5:1
+      # other args
+  }
+
+example-2:
+resource "aws_s3_bucket" "bucket" {
+    bucket = "my-bucket-${terraform.workspace}"
+    acl = "private"
+}
+
+*** current workspace state file will be stored in terraform.tfstate
+    other workspace state files will be stored in terraform.tfstate.d
