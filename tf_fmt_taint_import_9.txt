@@ -16,16 +16,16 @@
            importing same resource to multiple terraform resources can cause unknown behavior and is not recommended
   command to use: terraform import <tf resource address> <resource_id>
       scenarios to use import: 
-          1. when you need to work with existing resources
-          2. not allowed to create new resources
-          3. not in control of creation of infra, but only allowed to manage already created ones
+           1. when you need to work with existing resources
+           2. not allowed to create new resources
+           3. not in control of creation of infra, but only allowed to manage already created ones
 4. Terraform configuration block:
-    config block for controlling tf's own behavior
-        1. configuring backend for storing state files
-        2. specifying a required tf version
-        3. specifying a req tf provisioner version and its requirements
-        4. enable and test tf experimental features
-        5. passing metadata to providers
+     config block for controlling tf's own behavior
+            1. configuring backend for storing state files
+            2. specifying a required tf version
+            3. specifying a req tf provisioner version and its requirements
+            4. enable and test tf experimental features
+            5. passing metadata to providers
     example:
         terraform {
             required_version = ">=0.13.0"
@@ -33,16 +33,4 @@
                   aws = ">=3.0.0"
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
