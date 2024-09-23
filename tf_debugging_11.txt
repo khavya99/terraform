@@ -1,1 +1,12 @@
+TF_LOG is env variable for enabling verbose logging in tf.
+by default it sends logs to stderr (standard error output).
+
+logging can be set to following levels: TRACE, DEBUG, INFO, WARN, ERROR
+TRACE is most verbose level of logging and reliable one
+To persist logged output , use TF_LOG_PATH env variable (which takes a file as an input)
+
+By default tf_log is disabled. to ste it we need to follow below.
+  export TF_LOG=TRACE
+  export TF_LOG_PATH=./terraform.log
+
 
